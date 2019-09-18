@@ -29,10 +29,11 @@ mongoose.connect(process.env.MONGO_URI, connectOptions, (err, db) => {
 /* main */
 require('../models/UrlShorten');
 
-
 /* route */
 const routeHello = require('../routes/hello');
+const urlShorten = require('../routes/urlShorten');
 routeHello(app);
+urlShorten(app);
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on port: ${process.env.PORT}`);
