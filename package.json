@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon server/server.js",
     "start": "node server/server.js",
-    "deploy": "gcloud app deploy --project url-shortener-back --version $npm_package_version"
+    "deploy": "gcloud app deploy --project url-shortener-back --version $npm_package_version",
+    "browse": "gcloud app browse"
   },
   "repository": {
     "type": "git",
