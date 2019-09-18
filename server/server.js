@@ -26,6 +26,10 @@ mongoose.connect(process.env.MONGO_URI, connectOptions, (err, db) => {
   console.log('connect to mongoDb successfullly');
 });
 
+/* main */
+require('../models/UrlShorten');
+
+
 /* route */
 const routeHello = require('../routes/hello');
 routeHello(app);
