@@ -3,10 +3,12 @@
 
 ## TO DO
 * enable testing
+* production and dev env
 * travis ci with App Engine
   * https://cloud.google.com/solutions/continuous-delivery-with-travis-ci
   * https://cloud.google.com/docs/ci-cd/
   * https://cloud.google.com/source-repositories/docs/quickstart-triggering-builds-with-source-repositories
+* [secret management](https://cloud.google.com/solutions/secrets-management/)
 * enable CORS
 
 ## References
