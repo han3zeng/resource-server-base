@@ -58,3 +58,8 @@ typings/
 
 # next.js build output
 .next
+
+# travis-ci
+api_key.py
+client-secret.json
+credentials.tar.gz
