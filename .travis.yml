@@ -1,10 +1,7 @@
-before_install:
-- openssl aes-256-cbc -K $encrypted_10e7321a306e_key -iv $encrypted_10e7321a306e_iv -in credentials.tar.gz.enc -out credentials.tar.gz -d
-- gcloud auth activate-service-account --key-file client-secret.json
-- gcloud config set project url-shortener-back
-
-
+language: node_js
+node_js:
+  - 10
+before_script:
+  - openssl aes-256-cbc -K $encrypted_a4d4054e4a32_key -iv $encrypted_a4d4054e4a32_iv -in client-secret.json.enc -out client-secret.json -d
 script:
-# [START deploy]
-# Deploy the app
-- gcloud -q app deploy app.yaml --promote
+  - npm run gcloud:deploy
