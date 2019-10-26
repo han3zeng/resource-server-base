@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test mocha --recursive --exit",
     "start:dev": "nodemon server/server.js",
     "start": "node server/server.js",
-    "gcloud:deploy": "gcloud app deploy --project url-shortener-back --version 1-0-1",
+    "gcloud:deploy": "gcloud app deploy --project url-shortener-back --version 1-0-2",
     "gcloud:browse": "gcloud app browse"
   },
   "repository": {
