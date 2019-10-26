@@ -48,6 +48,7 @@ describe('POST urlShorten', () => {
       })
       .then((res) => {
         const body = res.body;
+        expect(body).to.contain.property('_id12355555');
         expect(body).to.contain.property('_id');
         expect(body).to.contain.property('originalUrl');
         expect(body).to.contain.property('urlCode');
