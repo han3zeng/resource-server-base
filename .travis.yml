@@ -3,5 +3,6 @@ node_js:
   - 10
 before_install:
   - openssl aes-256-cbc -K $encrypted_a4d4054e4a32_key -iv $encrypted_a4d4054e4a32_iv -in client-secret.json.enc -out client-secret.json -d
+  - gcloud auth activate-service-account --key-file client-secret.json
 script:
   - npm run gcloud:deploy
