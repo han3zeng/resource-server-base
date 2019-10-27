@@ -6,6 +6,8 @@ before_install:
   - gcloud auth activate-service-account --key-file client-secret.json
 install:
   - gcloud config set project url-shortener-back
+before_script:
+  - npm install
 script:
   - npm run test
-  - gcloud -q app deploy app.yaml --promote --version 1-0-3
+  - gcloud -q app deploy app.yaml --promote --version 1-0-4
