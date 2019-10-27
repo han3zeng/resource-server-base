@@ -1,6 +1,6 @@
 const hello = (app) => {
   app.get('/', (req, res) => {
-    res.send('travis cd test 07!!');
+    res.send('travis cd test!! version 1-0-4');
   });
 };
 
