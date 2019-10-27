@@ -10,4 +10,4 @@ before_script:
   - npm install
 script:
   - npm run test
-  - gcloud -q app deploy app.yaml --promote --version 1-0-4
+  - gcloud -q app deploy app.yaml --promote --version 1-0-5
