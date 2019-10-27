@@ -7,4 +7,5 @@ before_install:
 install:
   - gcloud config set project url-shortener-back
 script:
+  - npm run test
   - gcloud -q app deploy app.yaml --promote --version 1-0-3
