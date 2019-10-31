@@ -44,6 +44,11 @@
 * production and dev env
 * [secret management](https://cloud.google.com/solutions/secrets-management/)
 * enable CORS
+* font end
+* handle unrecognized path
+* create my own shortId hash function
+* typescript || flow
+* travis CI from push flow to PR flow
 
 ## References
 * [ref](https://www.youtube.com/watch?v=7VNgjfmv_fE)
