@@ -14,7 +14,9 @@ require('../db/models/UrlShorten');
 /* route */
 const routeHello = require('../routes/hello');
 const urlShorten = require('../routes/urlShorten');
+const redirectToOriginalUrl = require('../routes/redirectToOriginalUrl');
 routeHello(app);
 urlShorten(app);
+redirectToOriginalUrl(app);
 
 module.exports = app;
