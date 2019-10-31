@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validUrl = require('valid-url');
 const UrlShorten = mongoose.model('UrlShorten');
 const shortid = require('shortid');
+const config = require('../config/config.js');
 
 const urlValidation = ({ res, originalUrl }) => {
   if (!validUrl.isUri(originalUrl)) {
@@ -30,7 +31,7 @@ const urlShorten = (app) => {
         const newDoc = {
           originalUrl: urlObject.href,
           urlCode,
-          shortenUrl: `${urlObject.origin}/${urlCode}`,
+          shortenUrl: `${config.origin}/${urlCode}`,
           createdAt: new Date(),
           updatedAt: new Date()
         };
