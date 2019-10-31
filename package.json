@@ -5,8 +5,8 @@
   "scripts": {
     "eslint": "node_modules/.bin/eslint ",
     "test": "NODE_ENV=test mocha --recursive --exit",
-    "start:dev": "nodemon NODE_ENV=development server/server.js",
-    "start": "node NODE_ENV=production server/server.js",
+    "start:dev": "NODE_ENV=development nodemon server/server.js",
+    "start": "NODE_ENV=production node server/server.js",
     "gcloud:deploy": "gcloud app deploy --project url-shortener-back --version manually deploy test",
     "gcloud:browse": "gcloud app browse"
   },
