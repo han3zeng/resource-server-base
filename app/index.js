@@ -8,6 +8,23 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 app.use(jsonParser);
 app.use(urlencodedParser);
 
+function cors(req, res, next) {
+  const allowedOrigins = ['http://localhost:3000'];
+  const requsterOrigin = req.headers.origin;
+  if (allowedOrigins.indexOf(requsterOrigin) > -1) {
+    res.header('Access-Control-Allow-Origin', requsterOrigin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-type,Accept,x-access-token,X-Key');
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+  } else {
+    next();
+  }
+}
+
+app.use(cors);
+
 /* main */
 require('../db/models/UrlShorten');
 
