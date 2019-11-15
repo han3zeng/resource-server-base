@@ -38,13 +38,20 @@
 * [ ] create my own shortId hash function
 * [ ] typescript || flow
 * [ ] travis CI - from push flow to PR flow
+* [ ] Declare port number as variable in single config file
 
 
 ## Personal Note
 
 ### Travis CI set-up
 
-#### Steps
+#### Enable API
+* App Engine API
+* App Engine Admin API
+* Compute Engine  APIs
+* Cloud Build API
+
+#### Credentail Steps
 1. create an valid service account
     * has three roles
         1. App Engine Admin
@@ -54,7 +61,7 @@
 3. install travis CI cli
 4. travis login + encrypt downloaded key
     * `travis login --pro`
-    * `travis encrypt-file [your file] --pro --add`
+    * `travis encrypt-file [your file] --pro --add --com`
         * add decode command to travis.yml file directly
 5. commit the encrypted file
 
