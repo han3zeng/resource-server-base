@@ -1,6 +1,6 @@
 {
   "name": "url-shortener-back-end",
-  "version": "1.0.0",
+  "version": "1.0.11",
   "description": "url shortener restful api",
   "scripts": {
     "eslint": "node_modules/.bin/eslint ",
