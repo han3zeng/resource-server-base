@@ -1,3 +1,4 @@
+const allowedOrigins = require('../config/config').allowedOrigins;
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -9,7 +10,6 @@ app.use(jsonParser);
 app.use(urlencodedParser);
 
 function cors(req, res, next) {
-  const allowedOrigins = ['http://localhost:3000'];
   const requsterOrigin = req.headers.origin;
   if (allowedOrigins.indexOf(requsterOrigin) > -1) {
     res.header('Access-Control-Allow-Origin', requsterOrigin);
