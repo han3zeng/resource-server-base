@@ -15,7 +15,8 @@ function cors(req, res, next) {
     res.header('Access-Control-Allow-Origin', requsterOrigin);
   }
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-type,Accept,x-access-token,X-Key');
+  res.header('Access-Control-Allow-Headers', 'Content-type,Accept,x-access-token,X-Key,Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
   if (req.method === 'OPTIONS') {
     res.status(200).end();
   } else {
@@ -32,6 +33,11 @@ require('../db/models/UrlShorten');
 const routeHello = require('../routes/hello');
 const urlShorten = require('../routes/urlShorten');
 const redirectToOriginalUrl = require('../routes/redirectToOriginalUrl');
+const verifyToken = require('../routes/verifyToken');
+const retrieveUserProfile = require('../routes/retrieveUserProfile');
+
+retrieveUserProfile(app);
+verifyToken(app);
 routeHello(app);
 urlShorten(app);
 redirectToOriginalUrl(app);
