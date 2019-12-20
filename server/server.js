@@ -9,7 +9,7 @@ const thePort = process.env.PORT || 8080;
 db.connect()
   .then(() => {
     app.listen(thePort, () => {
-      console.log(`app is running on port: ${process.env.PORT}`);
+      console.log(`app is running on port: ${thePort}`);
     });
   })
   .catch((err) => {
