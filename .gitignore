@@ -63,3 +63,6 @@ typings/
 api_key.py
 client-secret.json
 credentials.tar.gz
+credentials.json
+app_engine_secret.json
+client_secret.tar
