@@ -5,8 +5,11 @@
   "scripts": {
     "eslint": "node_modules/.bin/eslint ",
     "test": "NODE_ENV=test mocha --recursive --exit",
-    "start:dev": "NODE_ENV=development nodemon server/server.js",
+    "start:dev": "NODE_ENV=development PORT=3033 nodemon server/server.js",
     "start": "NODE_ENV=production node server/server.js",
+    "encrypt:tar": "rm -f client_secret.tar.enc && rm -f client_secret.tar && tar -cvf client_secret.tar ./constants/credentials.json app_engine_secret.json .env",
+    "encrypt:travis": "travis encrypt-file ./client_secret.tar --add --com --pro",
+    "encrypt": "npm run encrypt:tar && npm run encrypt:travis",
     "gcloud:deploy": "gcloud app deploy --project url-shortener-back --version manually deploy test",
     "gcloud:browse": "gcloud app browse"
   },
