@@ -1,7 +1,7 @@
 {
-  "name": "url-shortener-back-end",
-  "version": "1.0.11",
-  "description": "url shortener restful api",
+  "name": "resource-server",
+  "version": "1.0.12",
+  "description": "resource server restful api",
   "scripts": {
     "eslint": "node_modules/.bin/eslint ",
     "test": "NODE_ENV=test mocha --recursive --exit",

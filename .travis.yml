@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - 10
 before_install:
-- openssl aes-256-cbc -K $encrypted_ef9f1846b6d3_key -iv $encrypted_ef9f1846b6d3_iv
+- openssl aes-256-cbc -K $encrypted_bcd6f5276c8a_key -iv $encrypted_bcd6f5276c8a_iv
   -in client_secret.tar.enc -out ./client_secret.tar -d
 - tar -xvf client_secret.tar
 - gcloud auth activate-service-account --key-file app_engine_secret.json
@@ -11,4 +11,4 @@ install:
 before_script:
 - npm install
 script:
-- npm run test && gcloud -q app deploy app.yaml --promote --version 1-0-11
+- npm run test && gcloud -q app deploy app.yaml --promote --version 1-0-12
