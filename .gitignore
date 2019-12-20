@@ -66,3 +66,4 @@ credentials.tar.gz
 credentials.json
 app_engine_secret.json
 client_secret.tar
+.env
