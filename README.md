@@ -39,6 +39,9 @@
 * [ ] typescript || flow
 * [ ] travis CI - from push flow to PR flow
 * [ ] Declare port number as variable in single config file
+* [ ] common middleware for requesting auth-server
+    * funciton
+    * api-key
 
 
 ## Personal Note
