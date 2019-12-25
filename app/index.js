@@ -6,8 +6,11 @@ const app = express();
 const jsonParser = bodyParser.json();
 // create application/x-www-form-urlencoded parser
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
+// cookie
+const cookieParser = require('cookie-parser')
 app.use(jsonParser);
 app.use(urlencodedParser);
+app.use(cookieParser());
 
 function cors(req, res, next) {
   const requsterOrigin = req.headers.origin;
@@ -35,11 +38,17 @@ const urlShorten = require('../routes/urlShorten');
 const redirectToOriginalUrl = require('../routes/redirectToOriginalUrl');
 const verifyToken = require('../routes/verifyToken');
 const retrieveUserProfile = require('../routes/retrieveUserProfile');
+const signOut = require('../routes/signOut');
+const signIn = require('../routes/signIn');
+const signUp = require('../routes/signUp');
 
 retrieveUserProfile(app);
 verifyToken(app);
 routeHello(app);
 urlShorten(app);
 redirectToOriginalUrl(app);
+signOut(app);
+signIn(app);
+signUp(app);
 
 module.exports = app;
