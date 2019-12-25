@@ -48,7 +48,7 @@ const retrieveUserProfile = (app) => {
   app.post('/api/retrieve-user-profile', (req, res) => {
     const authHeader = req.get('Authorization') || (req.cookies && req.cookies['access-token'] && `Bearer ${req.cookies['access-token']}`);
     if (!authHeader) {
-      error({
+      return error({
         res,
         status: 403,
         errorMessage: 'has no valid auth header include in the request'
@@ -72,6 +72,7 @@ const retrieveUserProfile = (app) => {
               .status(200)
               .cookie('access-token', accessToken, {
                 domain: config.domain,
+                path: '/',
                 httpOnly: true,
                 secure: nodeEnvIsProd,
                 expires: expTimestamp ? new Date(expTimestamp * 1000) : null
