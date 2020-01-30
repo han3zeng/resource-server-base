@@ -7,5 +7,5 @@ module.exports = Object.freeze({
   domain: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? '.url-shortener-back.appspot.com' : 'localhost',
   allowedOrigins: ['http://localhost:3000', 'https://portfolio-and-trial.appspot.com'],
   authServerOrigin: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'https://authorization-server-261201.appspot.com' : 'https://localhost:3030',
-  authServerHostName: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'authorization-server.appspot.com' : 'localhost:3030'
+  authServerHostName: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'authorization-server-261201.appspot.com' : 'localhost:3030'
 });
