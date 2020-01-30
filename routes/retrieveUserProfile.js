@@ -19,8 +19,8 @@ const protocol = nodeEnvIsProd ? https : http;
 const retrieve = (authHeader) => {
   return new Promise((resolve, reject) => {
     const options = {
-      hostName: config.authServerOrigin,
-      port: 3030,
+      hostname: config.authServerHostName,
+      port: config.authServerPort,
       path: '/retrieve-user-profile',
       method: 'GET',
       headers: {

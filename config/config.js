@@ -1,11 +1,12 @@
 const ENV_CONSTANTS = require('../constants/env');
 
 module.exports = Object.freeze({
-  nodeEnv: process.NODE_ENV || ENV_CONSTANTS.DEVELOPMENT,
-  nodeEnvIsProd: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION,
-  origin: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'https://url-shortener-back.appspot.com' : 'http://localhost:3033',
-  domain: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? '.url-shortener-back.appspot.com' : 'localhost',
+  nodeEnv: process.env.NODE_ENV || ENV_CONSTANTS.DEVELOPMENT,
+  nodeEnvIsProd: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION,
+  origin: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'https://url-shortener-back.appspot.com' : 'http://localhost:3033',
+  domain: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? '.url-shortener-back.appspot.com' : 'localhost',
   allowedOrigins: ['http://localhost:3000', 'https://portfolio-and-trial.appspot.com'],
-  authServerOrigin: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'https://authorization-server-261201.appspot.com' : 'https://localhost:3030',
-  authServerHostName: process.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'authorization-server-261201.appspot.com' : 'localhost:3030'
+  authServerOrigin: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'https://authorization-server-261201.appspot.com' : 'https://localhost:3030',
+  authServerHostName: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 'authorization-server-261201.appspot.com' : 'localhost',
+  authServerPort: process.env.NODE_ENV === ENV_CONSTANTS.PRODUCTION ? 443 : 3030
 });

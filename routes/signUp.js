@@ -22,8 +22,8 @@ const signUpRequest = ({
 }) => {
   return new Promise((resolve, reject) => {
     const options = {
-      hostName: config.authServerOrigin,
-      port: 3030,
+      hostname: config.authServerHostName,
+      port: config.authServerPort,
       path: '/user/signup',
       method: 'POST',
       headers: {

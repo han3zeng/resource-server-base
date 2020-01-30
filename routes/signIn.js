@@ -16,8 +16,8 @@ const _ = {
 const signInRequest = (email, password) => {
   return new Promise((resolve, reject) => {
     const options = {
-      hostName: config.authServerOrigin,
-      port: 3030,
+      hostname: config.authServerHostName,
+      port: config.authServerPort,
       path: '/user/signin',
       method: 'POST',
       headers: {
@@ -47,7 +47,7 @@ const signInRequest = (email, password) => {
 
 const signIn = (app) => {
   app.post('/user/signin', async (req, res) => {
-    const authHeader = (req.cookies && req.cookies['access-token'] && `Bearer ${req.cookies['access-token']}`);
+    // const authHeader = (req.cookies && req.cookies['access-token'] && `Bearer ${req.cookies['access-token']}`);
     // if (authHeader) {
     //   return error({
     //     res,
