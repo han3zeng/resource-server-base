@@ -58,7 +58,6 @@ const signIn = (app) => {
     const { email, password } = req.body;
     try {
       const response = await signInRequest(email, password);
-      // console.log('response: ', response)
       const responseObject = JSON.parse(response);
       if (responseObject.ok) {
         const accessToken = _.get(responseObject, 'response.data.token.jwt', null);
