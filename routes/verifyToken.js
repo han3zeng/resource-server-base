@@ -1,47 +1,10 @@
 // verify access token
 const _get = require('lodash/get');
-const https = require('https');
-const http = require('http');
 const { success, error } = require('../utils/responses');
-const config = require('../config/config');
-const { getCredentials } = require('../utils');
-
-const { API_KEY } = getCredentials();
-
+const { verifyTokenWithAuthServer } = require('../utils/authApi');
 
 const _ = {
-  get: _get,
-}
-const { nodeEnvIsProd } = config;
-
-const protocol = nodeEnvIsProd ? https : http;
-
-const verifyTokenWithAuthServer = (authHeader) => {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostName: config.authServerOrigin,
-      port: 3030,
-      path: '/verify-token',
-      method: 'GET',
-      headers: {
-        Authorization: authHeader,
-        'API-Key': API_KEY,
-      }
-    };
-    const req = protocol.request(options, (res) => {
-      res.setEncoding('utf8');
-      res.on('data', (response) => {
-        resolve(response);
-      });
-      res.on('end', () => {
-        console.log('no more data');
-      });
-    });
-    req.on('error', (e) => {
-      reject(e);
-    });
-    req.end();
-  });
+  get: _get
 };
 
 const verifyToken = (app) => {

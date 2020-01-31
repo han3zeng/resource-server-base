@@ -1,44 +1,9 @@
 const _get = require('lodash/get');
-const https = require('https');
-const http = require('http');
-const { error, success } = require('../utils/responses');
-const config = require('../config/config');
-const { getCredentials } = require('../utils');
-
-const { API_KEY } = getCredentials();
-const { nodeEnvIsProd } = config;
-const protocol = nodeEnvIsProd ? https : http;
+const { error } = require('../utils/responses');
+const { signOutRequest } = require('../utils/authApi');
 
 const _ = {
   get: _get
-};
-
-const signOutRequest = (authHeader) => {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: config.authServerHostName,
-      port: config.authServerPort,
-      path: '/user/signout',
-      method: 'POST',
-      headers: {
-        Authorization: authHeader,
-        'API-Key': API_KEY
-      }
-    };
-    const req = protocol.request(options, (res) => {
-      res.setEncoding('utf8');
-      res.on('data', (response) => {
-        resolve(response);
-      });
-      res.on('end', () => {
-        console.log('no more data');
-      });
-    });
-    req.on('error', (e) => {
-      reject(e);
-    });
-    req.end();
-  });
 };
 
 const signOut = (app) => {
@@ -55,14 +20,6 @@ const signOut = (app) => {
       const response = await signOutRequest(authHeader);
       const responseObject = JSON.parse(response);
       if (responseObject.ok) {
-        // success({
-        //   res,
-        //   status: 200,
-        //   data: {
-        //     message: 'user sign out successfully'
-        //   },
-        //   statusCode: null
-        // });
         res
           .status(200)
           .clearCookie('access-token', { path: '/' })
@@ -87,7 +44,6 @@ const signOut = (app) => {
         errorMessage: `Internal Server Error. Caused by the authorizatoin-server: ${e.message}`
       });
     }
-
   });
 };
 

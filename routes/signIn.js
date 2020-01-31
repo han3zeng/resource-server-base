@@ -1,60 +1,15 @@
 const _get = require('lodash/get');
-const https = require('https');
-const http = require('http');
-const { error, success } = require('../utils/responses');
+const { error } = require('../utils/responses');
 const config = require('../config/config');
-const { getCredentials } = require('../utils');
-
-const { API_KEY } = getCredentials();
+const { signInRequest } = require('../utils/authApi');
 const { nodeEnvIsProd } = config;
-const protocol = nodeEnvIsProd ? https : http;
 
 const _ = {
   get: _get
 };
 
-const signInRequest = (email, password) => {
-  return new Promise((resolve, reject) => {
-    const options = {
-      hostname: config.authServerHostName,
-      port: config.authServerPort,
-      path: '/user/signin',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'API-Key': API_KEY
-      }
-    };
-    const req = protocol.request(options, (res) => {
-      res.setEncoding('utf8');
-      res.on('data', (response) => {
-        resolve(response);
-      });
-      res.on('end', () => {
-        console.log('no more data');
-      });
-    });
-    req.on('error', (e) => {
-      reject(e);
-    });
-    req.write(JSON.stringify({
-      email,
-      password
-    }));
-    req.end();
-  });
-};
-
 const signIn = (app) => {
   app.post('/user/signin', async (req, res) => {
-    // const authHeader = (req.cookies && req.cookies['access-token'] && `Bearer ${req.cookies['access-token']}`);
-    // if (authHeader) {
-    //   return error({
-    //     res,
-    //     status: 400,
-    //     errorMessage: 'Bad Request. User has been signed in'
-    //   });
-    // }
     const { email, password } = req.body;
     try {
       const response = await signInRequest(email, password);
@@ -81,12 +36,13 @@ const signIn = (app) => {
       } else {
         error({
           res,
-          status: responseObject.status,
+          status: _.get(responseObject, 'status', null),
           errorMessage: _.get(responseObject, 'response.errorMessage', null)
         });
       }
     } catch (e) {
       error({
+        res,
         status: 500,
         errorMessage: `Internal Server Error. Caused by the authorizatoin-server: ${e.message}`
       });
