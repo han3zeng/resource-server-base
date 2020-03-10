@@ -1,6 +1,6 @@
 {
   "name": "resource-server",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "resource server restful api",
   "scripts": {
     "eslint": "node_modules/.bin/eslint ",
