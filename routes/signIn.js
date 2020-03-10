@@ -20,7 +20,7 @@ const signIn = (app) => {
         res
           .status(200)
           .cookie('access-token', accessToken, {
-            domain: config.frontEndDomain,
+            domain: config.domain,
             httpOnly: true,
             secure: nodeEnvIsProd,
             expires: expTimestamp ? new Date(expTimestamp * 1000) : null
