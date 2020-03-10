@@ -22,6 +22,7 @@ const signIn = (app) => {
           .cookie('access-token', accessToken, {
             domain: config.domain,
             httpOnly: true,
+            sameSite: nodeEnvIsProd ? 'none' : 'lax',
             secure: nodeEnvIsProd,
             expires: expTimestamp ? new Date(expTimestamp * 1000) : null
           })
